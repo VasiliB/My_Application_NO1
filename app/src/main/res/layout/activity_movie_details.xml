@@ -7,6 +7,62 @@
     tools:context=".MovieDetailsActivity"
     android:background="@color/background_black">
 
+    <ImageView
+        android:id="@+id/orig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/orig"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="Mask"
+        app:layout_constraintStart_toStartOf="Mask"
+        />
 
+    <ImageView
+        android:id="@+id/Mask"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/Mask" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avengers:\nEnd Game"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        tools:layout_editor_absoluteX="43dp"
+        tools:layout_editor_absoluteY="257dp" />
+
+    <ImageView
+        android:id="@+id/Movie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Movie"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <ImageView
+        android:id="@+id/Movie1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Movie"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Movie"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="440dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Movie"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="440dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
