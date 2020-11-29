@@ -26,43 +26,101 @@
         app:srcCompat="@drawable/Mask" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Avengers:\nEnd Game"
-        android:textColor="@color/white"
+        android:textColor="@color/gray_ECECEC"
         android:textSize="40sp"
         tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="257dp" />
-
-    <ImageView
-        android:id="@+id/Movie"
+        tools:layout_editor_absoluteY="257dp"
+        />
+    <TextView
+        android:id="@+id/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Movie"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="440dp" />
+        android:text="Action, Adventure, Fantasy"
+        android:textColor="@color/red_FF3466"
+        app:layout_constraintTop_toBottomOf="@id/title"
+
+        />
+
+    <TextView
+        android:id="@+id/reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="125 Reviews"
+        android:textColor="@color/gray_6D6D80"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        />
+
+    <TextView
+        android:id="@+id/storyline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Storyline"
+        android:textColor="@color/gray_ECECEC"
+        app:layout_constraintTop_toBottomOf="@+id/reviews"
+        app:layout_constraintStart_toStartOf="parent"
+  />
+    <TextView
+        android:id="@+id/story"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray_6D6D80"
+        android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
+        app:layout_constraintTop_toBottomOf="@+id/storyline"
+        />
 
     <ImageView
         android:id="@+id/Movie1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Movie"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="440dp" />
+        app:srcCompat="@drawable/Movie1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/Movie2"
+        app:layout_constraintTop_toBottomOf="@+id/cast"
+       />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/Movie2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Movie"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="440dp" />
+        app:srcCompat="@drawable/Movie2"
+        app:layout_constraintStart_toEndOf="@id/Movie1"
+        app:layout_constraintEnd_toStartOf="@id/Movie3"
+        app:layout_constraintTop_toTopOf="@id/Movie1"
+        tools:layout_editor_absoluteX="231dp"
+        tools:layout_editor_absoluteY="381dp" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/Movie3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/Movie"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="440dp" />
+        app:srcCompat="@drawable/Movie3"
+        app:layout_constraintStart_toEndOf="@id/Movie2"
+        app:layout_constraintEnd_toStartOf="@id/Movie4"
+        app:layout_constraintTop_toTopOf="@id/Movie1"
+        tools:layout_editor_absoluteX="97dp"
+        tools:layout_editor_absoluteY="592dp" />
+
+    <ImageView
+        android:id="@+id/Movie4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/Movie4"
+        app:layout_constraintStart_toEndOf="@id/Movie3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/Movie1"
+        tools:layout_editor_absoluteX="209dp"
+        tools:layout_editor_absoluteY="494dp" />
+    <TextView
+        android:id="@+id/cast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cast"
+        android:textColor="@color/gray_ECECEC"
+        app:layout_constraintBottom_toTopOf="@id/Movie1"
+        app:layout_constraintTop_toBottomOf="@+id/story"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
