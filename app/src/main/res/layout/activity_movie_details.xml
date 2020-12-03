@@ -13,20 +13,22 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="Mask"
-        app:layout_constraintStart_toStartOf="Mask"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/orig"
-        />
-
-    <ImageView
-        android:id="@+id/Mask"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/Mask" />
+        app:srcCompat="@drawable/orig" />
+
+    <ImageView
+        android:id="@+id/mask"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="@+id/orig"
+        app:layout_constraintEnd_toEndOf="@+id/orig"
+        app:layout_constraintTop_toTopOf="@+id/orig"
+        app:layout_constraintBottom_toBottomOf="@+id/orig"
+        app:srcCompat="@drawable/mask"
+        />
 
     <TextView
         android:id="@+id/title"
@@ -35,8 +37,9 @@
         android:text="Avengers:\nEnd Game"
         android:textColor="@color/gray_ECECEC"
         android:textSize="40sp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="257dp"
+        app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
+        android:layout_marginTop="254dp"
+        app:layout_constraintTop_toTopOf="parent"
         />
     <TextView
         android:id="@+id/genre"
@@ -45,7 +48,7 @@
         android:text="Action, Adventure, Fantasy"
         android:textColor="@color/red_FF3466"
         app:layout_constraintTop_toBottomOf="@id/title"
-
+        app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
         />
 
     <TextView
@@ -55,6 +58,7 @@
         android:text="125 Reviews"
         android:textColor="@color/gray_6D6D80"
         app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toEndOf="@+id/staricon0"
         />
 
     <TextView
@@ -63,8 +67,9 @@
         android:layout_height="wrap_content"
         android:text="Storyline"
         android:textColor="@color/gray_ECECEC"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reviews" />
+        app:layout_constraintTop_toBottomOf="@+id/reviews"
+        app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
+        />
 
     <TextView
         android:id="@+id/story"
@@ -85,7 +90,8 @@
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cast"
-        app:srcCompat="@drawable/Movie1" />
+        app:srcCompat="@drawable/movie1"
+        />
 
     <TextView
         android:layout_width="0dp"
@@ -104,7 +110,7 @@
         app:layout_constraintEnd_toStartOf="@id/Movie3"
         app:layout_constraintStart_toEndOf="@id/Movie1"
         app:layout_constraintTop_toTopOf="@id/Movie1"
-        app:srcCompat="@drawable/Movie2" />
+        app:srcCompat="@drawable/movie2" />
 
     <TextView
         android:layout_width="0dp"
@@ -120,7 +126,7 @@
         android:id="@+id/Movie3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/Movie3"
+        app:srcCompat="@drawable/movie3"
         app:layout_constraintStart_toEndOf="@id/Movie2"
         app:layout_constraintEnd_toStartOf="@id/Movie4"
         app:layout_constraintTop_toTopOf="@id/Movie1"
@@ -139,7 +145,7 @@
         android:id="@+id/Movie4"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        app:srcCompat="@drawable/Movie4"
+        app:srcCompat="@drawable/movie4"
         app:layout_constraintStart_toEndOf="@id/Movie3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/Movie1"
@@ -174,5 +180,59 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
+
+    <ImageView
+        android:id="@+id/staricon1"
+        android:layout_width="13.02dp"
+        android:layout_height="12dp"
+        app:srcCompat="@drawable/staricon"
+        app:layout_constraintTop_toTopOf="@+id/staricon0"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
+
+        />
+
+    <ImageView
+        android:id="@+id/staricon2"
+        android:layout_width="13.02dp"
+        android:layout_height="12dp"
+        app:srcCompat="@drawable/staricon"
+        app:layout_constraintTop_toTopOf="@+id/staricon0"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toEndOf="@+id/staricon1"
+
+        />
+
+    <ImageView
+        android:id="@+id/staricon3"
+        android:layout_width="13.02dp"
+        android:layout_height="12dp"
+        app:srcCompat="@drawable/staricon"
+        app:layout_constraintTop_toTopOf="@+id/staricon1"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toEndOf="@+id/staricon2"
+
+        />
+
+    <ImageView
+        android:id="@+id/staricon4"
+        android:layout_width="13.02dp"
+        android:layout_height="12dp"
+        app:srcCompat="@drawable/staricon"
+        app:layout_constraintTop_toTopOf="@+id/staricon0"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintStart_toEndOf="@+id/staricon3"
+
+        />
+
+    <ImageView
+        android:id="@+id/staricon0"
+        android:layout_width="13.02dp"
+        android:layout_height="12dp"
+        app:srcCompat="@drawable/staricon1"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintEnd_toStartOf="@+id/reviews"
+        app:layout_constraintStart_toEndOf="@+id/staricon4"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
