@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/background_black"
+    >
+
+    <TextView
+        android:id="@+id/movies_list"
+        android:layout_width="200dp"
+        android:layout_height="20dp"
+        android:text="Movies list"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/gray_ECECEC"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/bg_movie"
+        android:layout_width="170dp"
+        android:layout_height="296dp"
+        android:src="@drawable/bg_movie"
+        android:layout_marginTop="102dp"
+        android:layout_marginLeft="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/avenvers"
+        android:layout_marginTop="2dp"
+        android:layout_width="166dp"
+        android:layout_height="248dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="@+id/bg_movie"
+        app:layout_constraintStart_toStartOf="@+id/bg_movie"
+        app:layout_constraintTop_toTopOf="@+id/bg_movie"
+        app:srcCompat="@drawable/avengers" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/mask"
+        app:layout_constraintStart_toStartOf="@+id/avenvers"
+        app:layout_constraintEnd_toEndOf="@+id/avenvers"
+        app:layout_constraintTop_toTopOf="@+id/avenvers"
+        app:layout_constraintBottom_toBottomOf="@+id/avenvers"
+
+        />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="132dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="20dp"
+        android:text="Avengers: End Game"
+        android:textColor="@color/gray_ECECEC"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/bg_movie"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_movie"
+        />
+
+    <TextView
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Action, Adventure, Fantasy"
+        android:textSize="8sp"
+        android:textColor="@color/red_FF3466"
+        android:layout_marginLeft="8dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toTopOf="@id/title"
+        app:layout_constraintStart_toStartOf="@+id/bg_movie"
+        />
+
+    <TextView
+        android:id="@+id/reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="125 Reviews"
+        android:textColor="@color/gray_6D6D80"
+        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintBottom_toBottomOf="@+id/staricon1"
+        app:layout_constraintStart_toEndOf="@+id/staricon0"
+        />
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
