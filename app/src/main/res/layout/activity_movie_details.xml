@@ -32,15 +32,17 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="243dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="254dp"
+        android:layout_gravity="top"
         android:text="Avengers:\nEnd Game"
         android:textColor="@color/gray_ECECEC"
         android:textSize="40sp"
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
-        android:layout_marginTop="254dp"
         app:layout_constraintTop_toTopOf="parent"
         />
+
     <TextView
         android:id="@+id/genre"
         android:layout_width="wrap_content"
@@ -49,6 +51,7 @@
         android:textColor="@color/red_FF3466"
         app:layout_constraintTop_toBottomOf="@id/title"
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
@@ -57,18 +60,20 @@
         android:layout_height="wrap_content"
         android:text="125 Reviews"
         android:textColor="@color/gray_6D6D80"
-        app:layout_constraintTop_toBottomOf="@+id/genre"
+        app:layout_constraintTop_toTopOf="@+id/staricon1"
         app:layout_constraintBottom_toBottomOf="@+id/staricon1"
         app:layout_constraintStart_toEndOf="@+id/staricon0"
+        android:layout_marginLeft="8dp"
         />
 
     <TextView
         android:id="@+id/storyline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="343dp"
+        android:layout_height="20dp"
         android:text="Storyline"
         android:textColor="@color/gray_ECECEC"
         app:layout_constraintTop_toBottomOf="@+id/reviews"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
         />
 
@@ -79,6 +84,7 @@
         android:textColor="@color/gray_6D6D80"
         android:text="After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe."
         app:layout_constraintTop_toBottomOf="@+id/storyline"
+        android:layout_marginTop="4dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         />
@@ -92,6 +98,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cast"
         app:srcCompat="@drawable/movie1"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
@@ -116,7 +123,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Chris Evans"
+        android:text="Chris Evans"
         app:layout_constraintTop_toBottomOf="@id/Movie2"
         app:layout_constraintStart_toStartOf="@id/Movie2"
         app:layout_constraintEnd_toEndOf="@id/Movie2"
@@ -166,13 +173,14 @@
 
     <TextView
         android:id="@+id/cast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="243dp"
+        android:layout_height="24dp"
         android:text="Cast"
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
         android:textColor="@color/gray_ECECEC"
         app:layout_constraintBottom_toTopOf="@id/Movie1"
         app:layout_constraintTop_toBottomOf="@+id/story"
+        android:layout_marginTop="24dp"
         />
 
     <androidx.constraintlayout.widget.Guideline
@@ -190,6 +198,7 @@
         app:layout_constraintTop_toTopOf="@+id/staricon0"
         app:layout_constraintTop_toBottomOf="@+id/genre"
         app:layout_constraintStart_toEndOf="@+id/guideVerticalLeft"
+
 
         />
 
@@ -234,6 +243,7 @@
         app:layout_constraintTop_toBottomOf="@+id/genre"
         app:layout_constraintEnd_toStartOf="@+id/reviews"
         app:layout_constraintStart_toEndOf="@+id/staricon4"
+        android:layout_marginTop="8dp"
         />
 
     <ImageView
@@ -271,12 +281,14 @@
         />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="28dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="8dp"
+        android:textSize="12dp"
         app:layout_constraintTop_toTopOf="@+id/path"
         app:layout_constraintBottom_toBottomOf="@+id/path"
         app:layout_constraintStart_toEndOf="@+id/path"
-        android:textColor="@color/gray_191926"
+        android:textColor="@color/design_default_color_surface"
         android:text="Back"
         />
 
