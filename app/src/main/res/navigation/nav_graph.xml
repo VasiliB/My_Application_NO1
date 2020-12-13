@@ -14,6 +14,7 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -44,5 +45,26 @@
         <action
             android:id="@+id/action_Second2Fragment_to_First2Fragment"
             app:destination="@id/First2Fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieslist"
+        android:name="ru.anyname.myapplication.FragmentMoviesList"
+        android:label="@string/Fragment_Movies_List"
+        tools:layout="@layout/fragment_movies_list">
+
+        <action
+            android:id="@+id/action_FragmentMoviesList_to_MovieDetailsActivity"
+            app:destination="@id/moviesdetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesdetails"
+        android:name="ru.anyname.myapplication.Second2Fragment"
+        android:label="@string/Movie_Details_Activity"
+        tools:layout="@layout/activity_movie_details">
+
+        <action
+            android:id="@+id/action_MovieDetailsActivity_to_FragmentMoviesList"
+            app:destination="@id/movieslist" />
     </fragment>
 </navigation>

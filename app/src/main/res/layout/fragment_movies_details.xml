@@ -271,6 +271,7 @@
         />
 
     <TextView
+        android:id="@+id/back_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/path"
@@ -278,6 +279,17 @@
         app:layout_constraintStart_toEndOf="@+id/path"
         android:textColor="@color/gray_191926"
         android:text="Back"
+        />
+
+    <Button
+        android:id="@+id/button_back"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="@+id/back_sign"
+        app:layout_constraintLeft_toLeftOf="@+id/path"
+        app:layout_constraintBottom_toBottomOf="@+id/back_sign"
+        app:layout_constraintTop_toTopOf="@+id/back_sign"
+        android:visibility="invisible"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

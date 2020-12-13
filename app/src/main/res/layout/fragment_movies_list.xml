@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -203,9 +204,15 @@
         app:layout_constraintRight_toRightOf="@id/rectangle"
         />
 
-
-
-
-
+    <Button
+        android:id="@+id/button_end_game"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintRight_toRightOf="@+id/bg_movie"
+        app:layout_constraintLeft_toLeftOf="@+id/bg_movie"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_movie"
+        app:layout_constraintTop_toTopOf="@+id/bg_movie"
+        android:visibility="invisible"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
