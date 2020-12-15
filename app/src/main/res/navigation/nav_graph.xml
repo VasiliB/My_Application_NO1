@@ -60,7 +60,7 @@
     <fragment
         android:id="@+id/moviesdetails"
         android:name="ru.anyname.myapplication.Second2Fragment"
-        android:label="@string/Movies_Details_Activity"
+        android:label="@string/Fragment_Movies_List"
         tools:layout="@layout/fragment_movies_details">
 
         <action
