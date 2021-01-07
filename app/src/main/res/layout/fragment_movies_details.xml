@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +8,11 @@
     android:layout_height="match_parent"
     tools:context=".FragmentMoviesDetails"
     android:background="@color/background_black">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
     <ImageView
         android:id="@+id/orig"
@@ -281,15 +287,8 @@
         android:text="Back"
         />
 
-    <Button
-        android:id="@+id/button_back"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintRight_toRightOf="@+id/back_sign"
-        app:layout_constraintLeft_toLeftOf="@+id/path"
-        app:layout_constraintBottom_toBottomOf="@+id/back_sign"
-        app:layout_constraintTop_toTopOf="@+id/back_sign"
-        android:visibility="invisible"
-        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
