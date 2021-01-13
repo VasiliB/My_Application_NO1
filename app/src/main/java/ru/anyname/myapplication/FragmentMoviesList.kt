@@ -33,27 +33,3 @@ class FragmentMoviesList : Fragment() {
         }
     }
 }
-
-//class Fragment1 : Fragment() {
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//
-//        // получаем ссылку на макет фрагмента
-//        val fragmentLayout = inflater.inflate(R.layout.fragment_fragment1, container, false)
-//
-//        // получаем ссылку на NavController (навигационный контроллер)
-//        val navController = NavHostFragment.findNavController(this)
-
-//        // слушатели кнопок, которые передают адрес навигационному контроллеру
-//        fragmentLayout.button2.setOnClickListener { navController.navigate(R.id.fragment2) }
-//        fragmentLayout.button3.setOnClickListener { navController.navigate(R.id.fragment3) }
-//        fragmentLayout.button4.setOnClickListener { navController.navigate(R.id.fragment4) }
-//
-//        // возвращаем макет фрагмента
-//        return fragmentLayout
-//    }
-//
-//}
