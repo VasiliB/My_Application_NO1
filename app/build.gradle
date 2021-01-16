@@ -5,8 +5,14 @@ plugins {
 }
 
 android {
+
+    buildFeatures {
+        viewBinding true
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
+
+
 
     defaultConfig {
         applicationId "ru.anyname.myapplication"
@@ -33,6 +39,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -47,3 +54,4 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+

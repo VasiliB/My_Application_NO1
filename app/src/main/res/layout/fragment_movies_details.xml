@@ -24,6 +24,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/orig" />
 
+        <TextView
+            android:id="@+id/back_sign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@+id/path"
+            app:layout_constraintBottom_toBottomOf="@+id/path"
+            app:layout_constraintStart_toEndOf="@+id/path"
+            android:textColor="@color/design_default_color_surface"
+            android:text="Back"
+            />
+
     <ImageView
         android:id="@+id/mask"
         android:layout_height="0dp"
@@ -254,7 +265,7 @@
         />
 
     <TextView
-        android:id="@+id/_13"
+        android:id="@+id/limit13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="13+"
@@ -276,16 +287,7 @@
         android:src="@drawable/path"
         />
 
-    <TextView
-        android:id="@+id/back_sign"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@+id/path"
-        app:layout_constraintBottom_toBottomOf="@+id/path"
-        app:layout_constraintStart_toEndOf="@+id/path"
-        android:textColor="@color/gray_191926"
-        android:text="Back"
-        />
+
 
 
 
