@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_movies_details.*
 import kotlinx.android.synthetic.main.fragment_movies_list.*
+import ru.anyname.myapplication.databinding.FragmentMoviesDetailsBinding
+import ru.anyname.myapplication.databinding.FragmentMoviesListBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,7 +21,9 @@ private const val ARG_PARAM2 = "param2"
  * Use the [FragmentMoviesDetails.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentMoviesDetails : Fragment() {
+class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
+
+    private var fragmentMoviesDetailsBinding: FragmentMoviesDetailsBinding? = null
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -42,8 +46,8 @@ class FragmentMoviesDetails : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        back_sign.setOnClickListener {
+        fragmentMoviesDetailsBinding = FragmentMoviesDetailsBinding.bind(view)
+        fragmentMoviesDetailsBinding?.backsign?.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentMoviesDetails_to_FragmentMoviesList)
         }
     }

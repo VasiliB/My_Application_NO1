@@ -38,10 +38,10 @@
             />
 
             <ImageView
-                android:id="@+id/bg_movie"
+                android:id="@+id/bgmovie"
                 android:layout_width="170dp"
                 android:layout_height="296dp"
-                android:src="@drawable/bg_movie"
+                android:src="@drawable/bgmovie"
                 android:layout_marginTop="102dp"
                 android:layout_marginLeft="12dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,9 +54,9 @@
                 android:layout_width="166dp"
                 android:layout_height="248dp"
                 android:scaleType="centerCrop"
-                app:layout_constraintEnd_toEndOf="@+id/bg_movie"
-                app:layout_constraintStart_toStartOf="@+id/bg_movie"
-                app:layout_constraintTop_toTopOf="@+id/bg_movie"
+                app:layout_constraintEnd_toEndOf="@+id/bgmovie"
+                app:layout_constraintStart_toStartOf="@+id/bgmovie"
+                app:layout_constraintTop_toTopOf="@+id/bgmovie"
                 app:srcCompat="@drawable/avengers" />
 
             <ImageView
@@ -76,7 +76,7 @@
                 android:layout_marginLeft="8dp"
                 app:layout_constraintTop_toTopOf="@+id/staricon0"
                 app:layout_constraintTop_toBottomOf="@+id/genre"
-                app:layout_constraintStart_toStartOf="@+id/bg_movie"
+                app:layout_constraintStart_toStartOf="@+id/bgmovie"
 
                 />
 
@@ -134,8 +134,8 @@
                 android:text="Avengers: End Game"
                 android:textColor="@color/gray_ECECEC"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="@+id/bg_movie"
-                app:layout_constraintBottom_toBottomOf="@+id/bg_movie"
+                app:layout_constraintStart_toStartOf="@+id/bgmovie"
+                app:layout_constraintBottom_toBottomOf="@+id/bgmovie"
                 />
 
             <TextView
@@ -161,7 +161,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginBottom="30dp"
                 app:layout_constraintBottom_toTopOf="@id/title"
-                app:layout_constraintStart_toStartOf="@+id/bg_movie"
+                app:layout_constraintStart_toStartOf="@+id/bgmovie"
                 />
 
             <TextView
@@ -182,8 +182,8 @@
                 android:layout_height="14dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginRight="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/bg_movie"
-                app:layout_constraintTop_toTopOf="@+id/bg_movie"
+                app:layout_constraintEnd_toEndOf="@+id/bgmovie"
+                app:layout_constraintTop_toTopOf="@+id/bgmovie"
                 android:src="@drawable/like"
                 />
 
@@ -195,8 +195,8 @@
                 android:layout_height="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
-                app:layout_constraintLeft_toLeftOf="@+id/bg_movie"
-                app:layout_constraintTop_toTopOf="@+id/bg_movie"
+                app:layout_constraintLeft_toLeftOf="@+id/bgmovie"
+                app:layout_constraintTop_toTopOf="@+id/bgmovie"
                 android:src="@drawable/ic_rectangle"
                 />
 
@@ -211,15 +211,6 @@
                 app:layout_constraintLeft_toLeftOf="@id/rectangle"
                 app:layout_constraintRight_toRightOf="@id/rectangle"
                 />
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="104dp"
-                android:layout_height="95dp"
-                android:text="Button"
-                tools:layout_editor_absoluteX="212dp"
-                tools:layout_editor_absoluteY="191dp"
-                tools:ignore="MissingConstraints" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

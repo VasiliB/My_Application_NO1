@@ -44,9 +44,7 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
         super.onViewCreated(view, savedInstanceState)
         fragmentMovieslistBinding = FragmentMoviesListBinding.bind(view)
 
-        fragmentMovieslistBinding?.button.apply{
-            this?.click
-        } {
+        fragmentMovieslistBinding?.bgmovie?.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
         }
     }
