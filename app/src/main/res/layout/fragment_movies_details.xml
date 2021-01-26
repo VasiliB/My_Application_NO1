@@ -152,7 +152,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Robert Downey Jr."
+        android:text="Mark Ruffalo"
         app:layout_constraintTop_toBottomOf="@id/Movie3"
         app:layout_constraintStart_toStartOf="@id/Movie3"
         app:layout_constraintEnd_toEndOf="@id/Movie3"
@@ -174,7 +174,7 @@
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Robert Downey Jr."
+        android:text="Chris Hemsworth"
         app:layout_constraintTop_toBottomOf="@id/Movie4"
         app:layout_constraintStart_toStartOf="@id/Movie4"
         app:layout_constraintEnd_toEndOf="@id/Movie4"

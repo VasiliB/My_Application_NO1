@@ -6,10 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_movies_details.*
-import kotlinx.android.synthetic.main.fragment_movies_list.*
 import ru.anyname.myapplication.databinding.FragmentMoviesDetailsBinding
-import ru.anyname.myapplication.databinding.FragmentMoviesListBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
