@@ -87,6 +87,7 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
     //  This data class should contains actor's avatar url, name and if actor has oscar or not.
     fun onBind(movie: Movie) {
         // TODO 03_01: Load an avatar picture.
+
         Glide.with(context)
             .load(movie.cover)
             .into(cover)
