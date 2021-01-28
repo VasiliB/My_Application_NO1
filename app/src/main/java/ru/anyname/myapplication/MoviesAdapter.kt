@@ -14,10 +14,10 @@ import ru.anyname.myapplication.data.models.Movie
 class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
 
 //     Do not change.
-    private val imageOption = RequestOptions()
-        .placeholder(R.drawable.ic_avatar_placeholder)
-        .fallback(R.drawable.ic_avatar_placeholder)
-        .circleCrop()
+//    private val imageOption = RequestOptions()
+//        .placeholder(R.drawable.ic_avatar_placeholder)
+//        .fallback(R.drawable.ic_avatar_placeholder)
+//        .circleCrop()
 
     private var movies = listOf<Movie>()
 
@@ -49,7 +49,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
         //  as the position inside our Actors collection.
         when (holder) {
             is DataViewHolder -> {
-                holder.onBind(imageOption, movies[position])
+                holder.onBind(movies[position])
             }
             is EmptyViewHolder -> {
                 Toast.makeText(holder.itemView.context, "Nothing to bind in default holder", Toast.LENGTH_LONG).show()
@@ -78,20 +78,27 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
     private val cover: ImageView? = itemView.findViewById(R.id.movieCover)
 //    private val name: TextView? = itemView.findViewById(R.id.tv_actor_name)
     private val ageLimit: TextView? = itemView.findViewById(R.id.ageLimit)
+    private val movieGenre: TextView? = itemView.findViewById(R.id.genre)
+    private val reviews: TextView? = itemView.findViewById(R.id.reviews)
+    private val movieTitle: TextView? = itemView.findViewById(R.id.title)
+    private val movieDuration: TextView? = itemView.findViewById(R.id.duration)
 
     // TODO 02: Rename this public method. Provide some data class into this method's parameters.
     //  This data class should contains actor's avatar url, name and if actor has oscar or not.
-    fun onBind( options : RequestOptions, movie: Movie) {
+    fun onBind(movie: Movie) {
         // TODO 03_01: Load an avatar picture.
         Glide.with(context)
-            .load(movie.movieCover)
-            .apply(options)
+            .load(movie.cover)
             .into(cover)
-
 
 //        // TODO 03_02: Setup new name.
 //
         ageLimit?.text = movie.ageLimit
+        movieGenre?.text = movie.movieGenre
+        reviews?.text = movie.reviews
+        movieTitle?.text = movie.movieTitle
+        movieDuration?.text = movie.movieDuration
+
 //
 //        // TODO 03_03: Setup oscar state.
 //        oscarState?.text = context.getString(R.string.fragment_actors_avatar_oscar_state_text, actor.hasOscar.toString())

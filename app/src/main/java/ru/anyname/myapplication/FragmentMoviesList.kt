@@ -54,9 +54,6 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
         }
     }
 
-    companion object {
-        fun newInstance() = FragmentMoviesList()
-    }
 }
 
 
