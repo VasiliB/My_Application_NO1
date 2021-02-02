@@ -3,12 +3,12 @@ package ru.anyname.myapplication
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_movies_details.*
-import kotlinx.android.synthetic.main.fragment_movies_list.*
-import ru.anyname.myapplication.data.models.Movie
+import kotlinx.android.synthetic.main.view_holder_movie.*
 import ru.anyname.myapplication.databinding.FragmentMoviesListBinding
 import ru.anyname.myapplication.domain.MoviesDataSource
 
@@ -38,7 +38,17 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
 // Binding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+                fragmentMovieslistBinding = FragmentMoviesListBinding.bind(view)
+
+        fragmentMovieslistBinding?.root?.setOnClickListener {
+            findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
+        }
+//        root?.setOnClickListener(
+//            Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
+//        )
+
         recycler = view.findViewById(R.id.rv_movies_list)
+        recycler?.layoutManager = GridLayoutManager(context, 2)
         recycler?.adapter = MoviesAdapter()
     }
 
@@ -53,6 +63,28 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
             bindMovies(MoviesDataSource().getMovies())
         }
     }
+
+    private fun doOnClick(navigate: Unit) {
+        recycler?.let {
+            findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
+        }
+    }
+
+    /*TODO 4: create implementation of click listener
+                you can call function
+                doOnClick(actor: Actor)
+     */
+//    private val clickListener = object : OnRecyclerItemClicked {
+//        override fun onClick(view: View) {
+//            view.setOnClickListener(
+//                Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
+//            )
+//        }
+
+
+//            doOnClick(findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails))
+////        }
+//    }
 
 }
 

@@ -1,17 +1,19 @@
 package ru.anyname.myapplication
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import ru.anyname.myapplication.data.models.Movie
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
 
 //     Do not change.
 //    private val imageOption = RequestOptions()
@@ -36,8 +38,10 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
         //  Change the existed return result.
         //  Return the EmptyViewHolder or DataViewHolder depending on the viewType.
         return when (viewType) {
-            VIEW_TYPE_EMPTY -> EmptyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_actors_empty, parent, false))
-            else -> DataViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_movie, parent, false))
+            VIEW_TYPE_EMPTY -> EmptyViewHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_actors_empty, parent, false))
+            else -> DataViewHolder(LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_holder_movie, parent, false))
         }
     }
 
@@ -50,13 +54,24 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
         when (holder) {
             is DataViewHolder -> {
                 holder.onBind(movies[position])
+                holder.itemView.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putParcelable(FragmentMoviesDetails.ARG_MOVIE, movies[position])
+                    Navigation.findNavController(holder.itemView)
+                        .navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails, bundle)
+                }
+
             }
             is EmptyViewHolder -> {
-                Toast.makeText(holder.itemView.context, "Nothing to bind in default holder", Toast.LENGTH_LONG).show()
+                Toast.makeText(holder.itemView.context,
+                    "Nothing to bind in default holder",
+                    Toast.LENGTH_LONG).show()
             }
+
         }
         //Toast.makeText(holder.itemView.context, "Nothing to bind in default holder", Toast.LENGTH_LONG).show()
     }
+
 
     override fun getItemCount(): Int = movies.size
 
@@ -66,6 +81,7 @@ class MoviesAdapter : RecyclerView.Adapter<MoviesViewHolder>() {
 
 
 }
+
 abstract class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 private class EmptyViewHolder(itemView: View) : MoviesViewHolder(itemView)
@@ -76,7 +92,9 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
     //  First of all, find these views inside the "itemView" and store to variables.
     //  This "itemView" is a single recycler's item which is currently updating.
     private val cover: ImageView? = itemView.findViewById(R.id.movieCover)
-//    private val name: TextView? = itemView.findViewById(R.id.tv_actor_name)
+
+    private val avengers: ConstraintLayout? = itemView.findViewById(R.id.root)
+
     private val ageLimit: TextView? = itemView.findViewById(R.id.ageLimit)
     private val movieGenre: TextView? = itemView.findViewById(R.id.genre)
     private val reviews: TextView? = itemView.findViewById(R.id.reviews)
@@ -88,9 +106,15 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
     fun onBind(movie: Movie) {
         // TODO 03_01: Load an avatar picture.
 
+//        Glide.with(context)
+//            .load(movie.cover)
+//            .into(cover)
+//        cover?.setImageDrawable(context.getDrawable(movie.cover))
+
         Glide.with(context)
             .load(movie.cover)
             .into(cover)
+
 
 //        // TODO 03_02: Setup new name.
 //
@@ -100,9 +124,14 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
         movieTitle?.text = movie.movieTitle
         movieDuration?.text = movie.movieDuration
 
+
 //
 //        // TODO 03_03: Setup oscar state.
 //        oscarState?.text = context.getString(R.string.fragment_actors_avatar_oscar_state_text, actor.hasOscar.toString())
+    }
+
+    fun getImage(imageName: String): Int {
+        return context.resources.getIdentifier(imageName, "drawable", context.packageName)
     }
 }
 
@@ -114,3 +143,11 @@ private val RecyclerView.ViewHolder.context
 
 private val VIEW_TYPE_EMPTY = 0
 private val VIEW_TYPE_ACTORS = 1
+
+//interface OnRecyclerItemClicked {
+//    fun onClick(view: View) = view.setOnClickListener(
+//    Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
+//    )
+//}
+
+

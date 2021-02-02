@@ -14,4 +14,5 @@
     <string name="Fragment_Movies_List">Fragment Movies List</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_fragment_movies_list">FragmentMoviesList</string>
+    <string name="see">see</string>
 </resources>
