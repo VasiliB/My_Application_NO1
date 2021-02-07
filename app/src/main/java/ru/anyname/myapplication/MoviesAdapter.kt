@@ -7,19 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import ru.anyname.myapplication.data.models.Movie
 
 class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
-
-//     Do not change.
-//    private val imageOption = RequestOptions()
-//        .placeholder(R.drawable.ic_avatar_placeholder)
-//        .fallback(R.drawable.ic_avatar_placeholder)
-//        .circleCrop()
 
     private var movies = listOf<Movie>()
 
@@ -69,17 +61,13 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
             }
 
         }
-        //Toast.makeText(holder.itemView.context, "Nothing to bind in default holder", Toast.LENGTH_LONG).show()
     }
-
 
     override fun getItemCount(): Int = movies.size
 
     fun bindMovies(newMovies: List<Movie>) {
         movies = newMovies
     }
-
-
 }
 
 abstract class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
@@ -92,8 +80,6 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
     //  First of all, find these views inside the "itemView" and store to variables.
     //  This "itemView" is a single recycler's item which is currently updating.
     private val cover: ImageView? = itemView.findViewById(R.id.movieCover)
-
-    private val avengers: ConstraintLayout? = itemView.findViewById(R.id.root)
 
     private val ageLimit: TextView? = itemView.findViewById(R.id.ageLimit)
     private val movieGenre: TextView? = itemView.findViewById(R.id.genre)
@@ -109,11 +95,12 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
 //        Glide.with(context)
 //            .load(movie.cover)
 //            .into(cover)
-//        cover?.setImageDrawable(context.getDrawable(movie.cover))
+        cover?.setImageDrawable(context.getDrawable(getImage(movie.cover)))
 
-        Glide.with(context)
-            .load(movie.cover)
-            .into(cover)
+
+//        Glide.with(context)
+//            .load(movie.cover)
+//            .into(cover)
 
 
 //        // TODO 03_02: Setup new name.
@@ -123,14 +110,9 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
         reviews?.text = movie.reviews
         movieTitle?.text = movie.movieTitle
         movieDuration?.text = movie.movieDuration
-
-
-//
-//        // TODO 03_03: Setup oscar state.
-//        oscarState?.text = context.getString(R.string.fragment_actors_avatar_oscar_state_text, actor.hasOscar.toString())
     }
 
-    fun getImage(imageName: String): Int {
+    fun getImage(imageName: String?): Int {
         return context.resources.getIdentifier(imageName, "drawable", context.packageName)
     }
 }
@@ -143,11 +125,5 @@ private val RecyclerView.ViewHolder.context
 
 private val VIEW_TYPE_EMPTY = 0
 private val VIEW_TYPE_ACTORS = 1
-
-//interface OnRecyclerItemClicked {
-//    fun onClick(view: View) = view.setOnClickListener(
-//    Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
-//    )
-//}
 
 

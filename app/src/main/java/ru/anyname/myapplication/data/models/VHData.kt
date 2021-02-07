@@ -4,6 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Movie(
+
     val cover: String?,
     val ageLimit: String?,
 //    val heart: String,
@@ -12,7 +13,7 @@ data class Movie(
     val reviews: String?,
     val movieTitle: String?,
     val movieDuration: String?,
-    val description: String?
+//    val description: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -20,7 +21,7 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString(),
+//        parcel.readString(),
         parcel.readString()) {
     }
 

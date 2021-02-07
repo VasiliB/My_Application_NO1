@@ -8,7 +8,7 @@
     android:background="@color/background_black"
     tools:context=".FragmentMoviesList"
     android:fillViewport="true"
-    android:id="@+id/root"
+
     >
 
         <androidx.constraintlayout.widget.ConstraintLayout

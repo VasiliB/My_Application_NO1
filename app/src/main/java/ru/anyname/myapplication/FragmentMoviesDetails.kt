@@ -1,4 +1,4 @@
-package ru.anyname.myapplication
+ package ru.anyname.myapplication
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,17 +20,12 @@ class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
 
     private var fragmentMoviesDetailsBinding: FragmentMoviesDetailsBinding? = null
 
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
     private var movie: Movie? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             movie = it.getParcelable(ARG_MOVIE)
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
         }
     }
 

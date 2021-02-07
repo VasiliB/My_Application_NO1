@@ -19,16 +19,6 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
     private var fragmentMovieslistBinding: FragmentMoviesListBinding? = null
 
-
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//        fragmentMovieslistBinding = FragmentMoviesListBinding.bind(view)
-//
-//        fragmentMovieslistBinding?.bgmovie?.setOnClickListener {
-//            findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
-//        }
-//    }
-
     override fun onDestroyView() {
         // Consider not storing the binding instance in a field
         // if not needed.
@@ -43,9 +33,6 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
         fragmentMovieslistBinding?.root?.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
         }
-//        root?.setOnClickListener(
-//            Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
-//        )
 
         recycler = view.findViewById(R.id.rv_movies_list)
         recycler?.layoutManager = GridLayoutManager(context, 2)
@@ -54,7 +41,6 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
 
     override fun onStart() {
         super.onStart()
-
         updateData()
     }
 
@@ -63,29 +49,6 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
             bindMovies(MoviesDataSource().getMovies())
         }
     }
-
-    private fun doOnClick(navigate: Unit) {
-        recycler?.let {
-            findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
-        }
-    }
-
-    /*TODO 4: create implementation of click listener
-                you can call function
-                doOnClick(actor: Actor)
-     */
-//    private val clickListener = object : OnRecyclerItemClicked {
-//        override fun onClick(view: View) {
-//            view.setOnClickListener(
-//                Navigation.createNavigateOnClickListener(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails)
-//            )
-//        }
-
-
-//            doOnClick(findNavController().navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails))
-////        }
-//    }
-
 }
 
 
