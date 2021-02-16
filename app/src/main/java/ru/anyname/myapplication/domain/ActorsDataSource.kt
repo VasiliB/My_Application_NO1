@@ -7,9 +7,9 @@ class  ActorsDataSource {
     fun getActors(): List<Actor> {
         return listOf(
             Actor("Robert Downey Jr.", "movie1"),
-            Actor("Chris\u2028Evans", "movie2"),
-            Actor("Mark Ruffalo", "Movie3"),
-            Actor("Chris Hemsworth", "Movie4")
+            Actor("Chris Evans", "movie2"),
+            Actor("Mark Ruffalo", "movie3"),
+            Actor("Chris Hemsworth", "movie4")
         )
     }
 }

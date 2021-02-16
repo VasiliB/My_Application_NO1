@@ -16,9 +16,6 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
     private var movies = listOf<Movie>()
 
     override fun getItemViewType(position: Int): Int {
-        // TODO 05: Change the default return result, and return constant from the previous step.
-        //  If actors are empty, return the constant for the EmptyViewHolder.
-        //  Otherwise return the constant for the DataViewHolder.
         return when (movies.size) {
             0 -> VIEW_TYPE_EMPTY
             else -> VIEW_TYPE_ACTORS
@@ -26,9 +23,6 @@ class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        // TODO 06: You defined two different view types.
-        //  Change the existed return result.
-        //  Return the EmptyViewHolder or DataViewHolder depending on the viewType.
         return when (viewType) {
             VIEW_TYPE_EMPTY -> EmptyViewHolder(LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_actors_empty, parent, false))
