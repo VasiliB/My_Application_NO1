@@ -1,4 +1,4 @@
- package ru.anyname.myapplication
+package ru.anyname.myapplication
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.anyname.myapplication.data.models.Movie
 import ru.anyname.myapplication.databinding.FragmentMoviesDetailsBinding
+import ru.anyname.myapplication.domain.ActorsDataSource
+
 
 
 /**
@@ -17,6 +22,8 @@ import ru.anyname.myapplication.databinding.FragmentMoviesDetailsBinding
  * create an instance of this fragment.
  */
 class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
+
+    private var recycler: RecyclerView? = null
 
     private var fragmentMoviesDetailsBinding: FragmentMoviesDetailsBinding? = null
 
@@ -43,12 +50,26 @@ class FragmentMoviesDetails : Fragment(R.layout.fragment_movies_details) {
         fragmentMoviesDetailsBinding?.backsign?.setOnClickListener {
             findNavController().navigate(R.id.action_FragmentMoviesDetails_to_FragmentMoviesList)
         }
-        movie?.cover?.let { cover ->
-            fragmentMoviesDetailsBinding?.orig?.let {
-                Glide.with(context)
-                    .load(cover)
-                    .into(it)
-            }
+//        movie?.cover?.let { cover ->
+//            fragmentMoviesDetailsBinding?.orig?.let {
+//                Glide.with(context)
+//                    .load(cover)
+//                    .into(it)
+//            }
+//        }
+        recycler = view.findViewById(R.id.rv_movies_details)
+        recycler?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        recycler?.adapter = ActorsAdapter()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        updateData()
+    }
+
+    private fun updateData() {
+        (recycler?.adapter as? ActorsAdapter)?.apply {
+            bindActors(ActorsDataSource().getActors())
         }
     }
 
