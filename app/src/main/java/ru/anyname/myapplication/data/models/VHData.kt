@@ -7,7 +7,12 @@ data class Movie(
 
     val cover: String?,
     val ageLimit: String?,
-//    val heart: String,
+    val like: String?,
+    val rating1: String?,
+    val rating2: String?,
+    val rating3: String?,
+    val rating4: String?,
+    val rating5: String?,
     val movieGenre: String?,
 //    val movieRating: String,
     val reviews: String?,
@@ -21,6 +26,12 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
+        parcel.readString(),
 //        parcel.readString(),
         parcel.readString()) {
     }
@@ -28,6 +39,12 @@ data class Movie(
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(cover)
         parcel.writeString(ageLimit)
+        parcel.writeString(like)
+        parcel.writeString(rating1)
+        parcel.writeString(rating2)
+        parcel.writeString(rating3)
+        parcel.writeString(rating4)
+        parcel.writeString(rating5)
         parcel.writeString(movieGenre)
         parcel.writeString(reviews)
         parcel.writeString(movieTitle)

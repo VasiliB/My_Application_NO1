@@ -5,7 +5,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+    android:layout_margin="6dp"
     android:fillViewport="true"
     tools:background="@color/background_black"
     tools:context=".FragmentMoviesList">
@@ -154,6 +154,7 @@
         app:layout_constraintTop_toTopOf="@+id/staricon1" />
 
     <ImageView
+        android:id="@+id/like"
         android:layout_width="16dp"
         android:layout_height="14dp"
         android:layout_marginTop="13dp"
@@ -183,6 +184,8 @@
         app:layout_constraintLeft_toLeftOf="@id/rectangle"
         app:layout_constraintRight_toRightOf="@id/rectangle"
         app:layout_constraintTop_toTopOf="@id/rectangle" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

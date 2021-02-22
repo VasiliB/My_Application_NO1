@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_black"
-    tools:context=".FragmentMoviesList"
     android:fillViewport="true"
+    tools:context=".FragmentMoviesList"
 
     >
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/movies_list"
             android:layout_width="200dp"
-            android:layout_height="20dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="44dp"
             android:text="Movies list"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="50dp"
+            android:padding="10dp"
             android:textColor="@color/gray_ECECEC"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginTop="1dp"
             android:layout_marginRight="8dp"
+            android:src="@drawable/combined_shape"
             app:layout_constraintEnd_toStartOf="@+id/movies_list"
             app:layout_constraintTop_toTopOf="@+id/movies_list"
-            android:src="@drawable/combined_shape"
+            app:layout_constraintBottom_toBottomOf="@+id/movies_list"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_movies_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="6dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/movies_list"
+            android:layout_marginTop="24dp"
             />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_movies_list"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/movies_list"
-                />
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.core.widget.NestedScrollView>

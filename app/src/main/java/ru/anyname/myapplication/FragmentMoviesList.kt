@@ -1,5 +1,6 @@
 package ru.anyname.myapplication
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import ru.anyname.myapplication.domain.MoviesDataSource
 class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
 
     private var recycler: RecyclerView? = null
+
     // Scoped to the lifecycle of the fragment's view (between onCreateView and onDestroyView)
     private var fragmentMovieslistBinding: FragmentMoviesListBinding? = null
 
@@ -37,6 +39,10 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
         recycler = view.findViewById(R.id.rv_movies_list)
         recycler?.layoutManager = GridLayoutManager(context, 2)
         recycler?.adapter = MoviesAdapter()
+
+//        recycler?.addItemDecoration(
+//            MarginItemDecoration(8)
+//        )
     }
 
     override fun onStart() {
@@ -51,4 +57,35 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
     }
 }
 
+class MarginItemDecoration(
+    private val spaceSize: Int,
+    private val spanCount: Int = 1,
+    private val orientation: Int = GridLayoutManager.VERTICAL
+) : RecyclerView.ItemDecoration() {
+    override fun getItemOffsets(
+        outRect: Rect, view: View,
+        parent: RecyclerView, state: RecyclerView.State
+    ) {
+        with(outRect) {
+            if (orientation == GridLayoutManager.VERTICAL) {
+                if (parent.getChildAdapterPosition(view) < spanCount) {
+                    top = spaceSize
+                }
+                if (parent.getChildAdapterPosition(view) % spanCount == 0) {
+                    left = spaceSize
+                }
+            } else {
+                if (parent.getChildAdapterPosition(view) < spanCount) {
+                    left = spaceSize
+                }
+                if (parent.getChildAdapterPosition(view) % spanCount == 0) {
+                    top = spaceSize
+                }
+            }
+
+            right = spaceSize
+            bottom = spaceSize
+        }
+    }
+}
 

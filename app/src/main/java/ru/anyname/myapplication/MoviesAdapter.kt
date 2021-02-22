@@ -77,6 +77,12 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
 
     private val ageLimit: TextView? = itemView.findViewById(R.id.ageLimit)
     private val movieGenre: TextView? = itemView.findViewById(R.id.genre)
+    private val like: ImageView? = itemView.findViewById(R.id.like)
+    private val rating1: ImageView? = itemView.findViewById(R.id.staricon1)
+    private val rating2: ImageView? = itemView.findViewById(R.id.staricon2)
+    private val rating3: ImageView? = itemView.findViewById(R.id.staricon3)
+    private val rating4: ImageView? = itemView.findViewById(R.id.staricon4)
+    private val rating5: ImageView? = itemView.findViewById(R.id.staricon0)
     private val reviews: TextView? = itemView.findViewById(R.id.reviews)
     private val movieTitle: TextView? = itemView.findViewById(R.id.title)
     private val movieDuration: TextView? = itemView.findViewById(R.id.duration)
@@ -90,6 +96,13 @@ private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
 //            .load(movie.cover)
 //            .into(cover)
         cover?.setImageDrawable(context.getDrawable(getImage(movie.cover)))
+
+        like?.setImageDrawable(context.getDrawable(getImage(movie.like)))
+        rating1?.setImageDrawable(context.getDrawable(getImage(movie.rating1)))
+        rating2?.setImageDrawable(context.getDrawable(getImage(movie.rating2)))
+        rating3?.setImageDrawable(context.getDrawable(getImage(movie.rating3)))
+        rating4?.setImageDrawable(context.getDrawable(getImage(movie.rating4)))
+        rating5?.setImageDrawable(context.getDrawable(getImage(movie.rating5)))
 
 
 //        Glide.with(context)
@@ -119,5 +132,7 @@ private val RecyclerView.ViewHolder.context
 
 private val VIEW_TYPE_EMPTY = 0
 private val VIEW_TYPE_ACTORS = 1
+
+
 
 
