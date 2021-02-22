@@ -14,11 +14,10 @@ data class Movie(
     val rating4: String?,
     val rating5: String?,
     val movieGenre: String?,
-//    val movieRating: String,
     val reviews: String?,
     val movieTitle: String?,
     val movieDuration: String?,
-//    val description: String?
+
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),
@@ -32,9 +31,8 @@ data class Movie(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-//        parcel.readString(),
-        parcel.readString()) {
-    }
+        parcel.readString())
+
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(cover)

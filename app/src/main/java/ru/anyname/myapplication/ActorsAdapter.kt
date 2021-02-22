@@ -32,24 +32,15 @@ class ActorsAdapter() : RecyclerView.Adapter<ActorsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ActorsViewHolder, position: Int) {
-        // TODO 07: Refactor this method's body.
-        //  When holder is the Empty Holder, show toast.
-        //  When holder is the Data Holder, call public method of this holder and provide parameters.
-        //  In our workshop, the position of the item inside the recycler is the same
-        //  as the position inside our Actors collection.
         when (holder) {
             is DataViewHolderA -> {
                 holder.onBind(actors[position])
                 holder.itemView.setOnClickListener {
-                    val bundle = Bundle()
-                    bundle.putParcelable(FragmentMoviesDetails.ARG_MOVIE, actors[position])
-
                 }
-
             }
             is EmptyViewHolderA -> {
                 Toast.makeText(holder.itemView.context,
-                    "Nothing to bind in default holder",
+                    "Nothing to bind",
                     Toast.LENGTH_LONG).show()
             }
 
@@ -67,28 +58,13 @@ abstract class ActorsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVi
 
 private class EmptyViewHolderA(itemView: View) : ActorsViewHolder(itemView)
 private class DataViewHolderA(itemView: View) : ActorsViewHolder(itemView) {
-    // TODO 01: Open a file: "../res/layout/item_actors_data.xml".
-    //  You can see three views: "actor_avatar, actor_name, actor_oscar_state".
-    //  You have to update these view's content in runtime.
-    //  First of all, find these views inside the "itemView" and store to variables.
-    //  This "itemView" is a single recycler's item which is currently updating.
     private val actorAvatar: ImageView? = itemView.findViewById(R.id.actorAvatar)
 
     private val actorName: TextView? = itemView.findViewById(R.id.actorName)
 
-
-    // TODO 02: Rename this public method. Provide some data class into this method's parameters.
-    //  This data class should contains actor's avatar url, name and if actor has oscar or not.
     fun onBind(actor: Actor) {
-        // TODO 03_01: Load an avatar picture.
-
         actorAvatar?.setImageDrawable(context.getDrawable(getImage(actor.actorAvatar)))
-
-
-//        // TODO 03_02: Setup new name.
-//
         actorName?.text = actor.actorName
-
     }
 
     fun getImage(imageName: String?): Int {
@@ -98,9 +74,6 @@ private class DataViewHolderA(itemView: View) : ActorsViewHolder(itemView) {
 
 private val RecyclerView.ViewHolder.context
     get() = this.itemView.context
-
-// TODO 04: Create two Int constants for different ViewTypes.
-//  First represents the Empty View Holder. Second represents a ViewHolder with data.
 
 private val VIEW_TYPE_EMPTY = 0
 private val VIEW_TYPE_ACTORS = 1
