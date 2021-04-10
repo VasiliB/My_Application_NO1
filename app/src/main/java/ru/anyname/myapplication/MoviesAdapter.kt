@@ -1,5 +1,6 @@
 package ru.anyname.myapplication
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,106 +8,112 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import ru.anyname.myapplication.data.models.Movie
 
-class MoviesAdapter() : RecyclerView.Adapter<MoviesViewHolder>() {
+class MoviesAdapter(private val onClickCard: (item: Movie) -> Unit) :
+    ListAdapter<Movie, MoviesAdapter.ViewHolder>(DiffCallback()) {
 
-    private var movies = listOf<Movie>()
-
-    override fun getItemViewType(position: Int): Int {
-        return when (movies.size) {
-            0 -> VIEW_TYPE_EMPTY
-            else -> VIEW_TYPE_ACTORS
-        }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.view_holder_movie, parent, false)
+        )
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
-        return when (viewType) {
-            VIEW_TYPE_EMPTY -> EmptyViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.item_actors_empty, parent, false))
-            else -> DataViewHolder(LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_holder_movie, parent, false))
-        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val item = getItem(position)
+        holder.bind(item, onClickCard)
     }
 
-    override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
 
-        when (holder) {
-            is DataViewHolder -> {
-                holder.onBind(movies[position])
-                holder.itemView.setOnClickListener {
-                    val bundle = Bundle()
-//                    bundle.putParcelable(FragmentMoviesDetails.ARG_MOVIE, movies[position])
-                    Navigation.findNavController(holder.itemView)
-                        .navigate(R.id.action_FragmentMoviesList_to_FragmentMoviesDetails, bundle)
-                }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val movieImage: ImageView = itemView.findViewById(R.id.movieCover)
+
+        private val pgText: TextView = itemView.findViewById(R.id.ageLimit)
+        private val genreText: TextView? = itemView.findViewById(R.id.genre)
+        private val likeImage: ImageView? = itemView.findViewById(R.id.like)
+        private val reviewsText: TextView? = itemView.findViewById(R.id.reviews)
+        private val titleText: TextView? = itemView.findViewById(R.id.title)
+        private val movieLenText: TextView? = itemView.findViewById(R.id.duration)
+        private val starsImages: List<ImageView> = listOf(
+            itemView.findViewById(R.id.staricon1),
+            itemView.findViewById(R.id.staricon2),
+            itemView.findViewById(R.id.staricon3),
+            itemView.findViewById(R.id.staricon4),
+            itemView.findViewById(R.id.staricon0)
+        )
+
+        fun bind(item: Movie, onClickCard: (item: Movie) -> Unit) {
+            movieImage.load(item.imageUrl)
+
+            val context = itemView.context
+            pgText.text =
+                context.getString(R.string.movies_list_allowed_age_template, item.pgAge)
+            if (genreText != null) {
+                genreText.text = item.genres.joinToString { it.name }
             }
-            is EmptyViewHolder -> {
-                Toast.makeText(holder.itemView.context,
-                    "Nothing to bind",
-                    Toast.LENGTH_LONG).show()
+            if (reviewsText != null) {
+                reviewsText.text =
+                    context.getString(R.string.movies_list_reviews_template, item.reviewCount)
+            }
+            if (titleText != null) {
+                titleText.text = item.title
+            }
+            if (movieLenText != null) {
+                movieLenText.text = context.getString(R.string.movies_list_film_time, item.runningTime)
             }
 
+            val likeColor = if (item.isLiked) {
+                R.color.pink_light
+            } else {
+                R.color.color_white
+            }
+            if (likeImage != null) {
+                ImageViewCompat.setImageTintList(
+                    likeImage, ColorStateList.valueOf(
+                        ContextCompat.getColor(likeImage.context, likeColor)
+                    )
+                )
+            }
+
+            //set stars tint
+            starsImages.forEachIndexed { index, imageView ->
+                val colorId = if (item.rating > index) R.color.pink_light else R.color.gray_dark
+                ImageViewCompat.setImageTintList(
+                    imageView, ColorStateList.valueOf(
+                        ContextCompat.getColor(imageView.context, colorId)
+                    )
+                )
+            }
+
+            itemView.setOnClickListener {
+                onClickCard(item)
+            }
         }
     }
 
-    override fun getItemCount(): Int = movies.size
 
-    fun bindMovies(newMovies: List<Movie>) {
-        movies = newMovies
+    class DiffCallback : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+            return oldItem == newItem
+        }
     }
+
 }
 
-abstract class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-private class EmptyViewHolder(itemView: View) : MoviesViewHolder(itemView)
-private class DataViewHolder(itemView: View) : MoviesViewHolder(itemView) {
-
-    private val cover: ImageView? = itemView.findViewById(R.id.movieCover)
-
-    private val ageLimit: TextView? = itemView.findViewById(R.id.ageLimit)
-    private val movieGenre: TextView? = itemView.findViewById(R.id.genre)
-    private val like: ImageView? = itemView.findViewById(R.id.like)
-    private val rating1: ImageView? = itemView.findViewById(R.id.staricon1)
-    private val rating2: ImageView? = itemView.findViewById(R.id.staricon2)
-    private val rating3: ImageView? = itemView.findViewById(R.id.staricon3)
-    private val rating4: ImageView? = itemView.findViewById(R.id.staricon4)
-    private val rating5: ImageView? = itemView.findViewById(R.id.staricon0)
-    private val reviews: TextView? = itemView.findViewById(R.id.reviews)
-    private val movieTitle: TextView? = itemView.findViewById(R.id.title)
-    private val movieDuration: TextView? = itemView.findViewById(R.id.duration)
-
-    fun onBind(movie: Movie) {
-
-        cover?.setImageDrawable(context.getDrawable(getImage(movie.cover)))
-
-        like?.setImageDrawable(context.getDrawable(getImage(movie.like)))
-        rating1?.setImageDrawable(context.getDrawable(getImage(movie.rating1)))
-        rating2?.setImageDrawable(context.getDrawable(getImage(movie.rating2)))
-        rating3?.setImageDrawable(context.getDrawable(getImage(movie.rating3)))
-        rating4?.setImageDrawable(context.getDrawable(getImage(movie.rating4)))
-        rating5?.setImageDrawable(context.getDrawable(getImage(movie.rating5)))
-
-        ageLimit?.text = movie.ageLimit
-        movieGenre?.text = movie.movieGenre
-        reviews?.text = movie.reviews
-        movieTitle?.text = movie.movieTitle
-        movieDuration?.text = movie.movieDuration
-    }
-
-    fun getImage(imageName: String?): Int {
-        return context.resources.getIdentifier(imageName, "drawable", context.packageName)
-    }
-}
-
-private val RecyclerView.ViewHolder.context
-    get() = this.itemView.context
-
-private val VIEW_TYPE_EMPTY = 0
-private val VIEW_TYPE_ACTORS = 1
 
 
 
