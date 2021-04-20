@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity(),
     FragmentMoviesList.MoviesListItemClickListener,
     FragmentMoviesDetails.MovieDetailsBackClickListener,
     MovieRepositoryProvider {
+
     private val jsonMovieRepository = JsonMovieRepository(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
