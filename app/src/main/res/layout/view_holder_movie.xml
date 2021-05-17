@@ -8,7 +8,7 @@
     android:layout_margin="6dp"
     android:fillViewport="true"
     tools:background="@color/background_black"
-    tools:context=".FragmentMoviesList">
+    tools:context=".movies.FragmentMoviesList">
 
     <ImageView
         android:id="@+id/bgmovie"

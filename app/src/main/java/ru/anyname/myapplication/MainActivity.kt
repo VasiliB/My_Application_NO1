@@ -1,17 +1,13 @@
 package ru.anyname.myapplication
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import ru.anyname.myapplication.data.JsonMovieRepository
 import ru.anyname.myapplication.data.MovieRepository
-import ru.anyname.myapplication.data.MovieRepositoryProvider
 import ru.anyname.myapplication.data.models.Movie
+import ru.anyname.myapplication.di.MovieRepositoryProvider
+import ru.anyname.myapplication.moviedetais.FragmentMoviesDetails
+import ru.anyname.myapplication.movies.FragmentMoviesList
 
 class MainActivity : AppCompatActivity(),
     FragmentMoviesList.MoviesListItemClickListener,

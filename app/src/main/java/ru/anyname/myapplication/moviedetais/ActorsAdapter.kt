@@ -1,6 +1,5 @@
-package ru.anyname.myapplication
+package ru.anyname.myapplication.moviedetais
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.anyname.myapplication.data.models.Actor
 import coil.load
+import ru.anyname.myapplication.R
 
 
 class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ViewHolder>(DiffCallback()) {

@@ -1,4 +1,4 @@
-package ru.anyname.myapplication
+package ru.anyname.myapplication.moviedetais
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -13,21 +13,22 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.widget.ImageViewCompat
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.bumptech.glide.Glide
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import ru.anyname.myapplication.data.MovieRepositoryProvider
+import ru.anyname.myapplication.R
 import ru.anyname.myapplication.data.models.Movie
-import ru.anyname.myapplication.databinding.FragmentMoviesDetailsBinding
-
-//import ru.anyname.myapplication.domain.ActorsDataSource
+import ru.anyname.myapplication.di.MovieRepositoryProvider
 
 class FragmentMoviesDetails : Fragment() {
+
+    private val viewModel: MovieDetailsViewModel by viewModels {
+        MovieDetailsViewModelFactory((requireActivity() as MovieRepositoryProvider).provideMovieRepository())
+    }
 
     private var listener: MovieDetailsBackClickListener? = null
 
@@ -38,10 +39,6 @@ class FragmentMoviesDetails : Fragment() {
             listener = context
         }
     }
-
-//    private var recycler: RecyclerView? = null
-//
-//    private var fragmentMoviesDetailsBinding: FragmentMoviesDetailsBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,40 +64,21 @@ class FragmentMoviesDetails : Fragment() {
         view.findViewById<View>(R.id.backsign)?.setOnClickListener {
             listener?.onMovieDeselected()
         }
-        lifecycleScope.launch {
-            val repository = (requireActivity() as MovieRepositoryProvider).provideMovieRepository()
-            val movie = repository.loadMovie(movieId)
 
-            if (movie != null) {
-                bindUI(view, movie)
-            } else {
-                showMovieNotFoundError()
+        viewModel.loadDetails(movieId)
+
+        lifecycleScope.launch {
+            viewModel.movie.collect { movie ->
+                movie?.let { bindUI(view, it) } ?: showMovieNotFoundError()
             }
         }
-//        fragmentMoviesDetailsBinding = FragmentMoviesDetailsBinding.bind(view)
-//        fragmentMoviesDetailsBinding?.backsign?.setOnClickListener {
-//            findNavController().navigate(R.id.action_FragmentMoviesDetails_to_FragmentMoviesList)
-//        }
-//
-//        recycler = view.findViewById(R.id.rv_movies_details)
-//        recycler?.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-//        recycler?.adapter = ActorsAdapter()
+
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        updateData()
-//    }
-
-//    private fun updateData() {
-//        (recycler?.adapter as? ActorsAdapter)?.apply {
-//            bindActors(ActorsDataSource().getActors())
-//        }
-//    }
-
-
     private fun showMovieNotFoundError() {
-        Toast.makeText(requireContext(), R.string.error_movie_not_found, Toast.LENGTH_LONG)
+        Toast.makeText(requireContext(),
+            R.string.error_movie_not_found,
+            Toast.LENGTH_LONG)
             .show()
     }
 
